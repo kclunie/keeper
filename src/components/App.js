@@ -8,6 +8,12 @@ import CreateArea from "./CreateArea.js";
 console.log(notes)
 
 function App(){
+
+    function addNote(note){
+        console.log("yooo")
+        console.log(note)
+    }
+
     return <div>
     <Header />
     {/* {notes.map(function(x){
@@ -18,7 +24,7 @@ function App(){
             content={x.content}
         />
     )})} */}
-    <CreateArea />
+    <CreateArea addNote={addNote}/>
        {notes.map(x =>
         <Note 
             key={x.key}
