@@ -1,17 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "./Header.js";
 import Footer from "./Footer.js";
 import Note from "./Note.js";
-import notes from "../notes.js";
+//import notes from "../notes.js";
 import CreateArea from "./CreateArea.js";
-
-console.log(notes)
 
 function App(){
 
-    function addNote(note){
-        console.log("yooo")
-        console.log(note)
+    const [notes, setNotes] = useState([]);
+
+    function addNote(newNote){
+        console.log(newNote);
+        setNotes((prevValue) => {
+            return [...prevValue, newNote];
+        });
+
     }
 
     return <div>
@@ -25,13 +28,11 @@ function App(){
         />
     )})} */}
     <CreateArea addNote={addNote}/>
-       {notes.map(x =>
-        <Note 
-            key={x.key}
-            title={x.title}
-            content={x.content}
-        />
-    )}
+
+    {notes.map((note) => {
+        return <Note key={note.key} title={note.title} content={note.content}/>
+    })}
+
     <Footer />
 </div>
 }
